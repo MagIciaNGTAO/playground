@@ -17,6 +17,7 @@
     
     <modules>
         <module>playground-java8</module>
+        <module>playground-hk2</module>
     </modules>
     
     <dependencies>
