@@ -15,7 +15,7 @@
  */
 package com.fitbur.playground.hk2.factory;
 
-import com.fitbur.playground.hk2.core.PerLookupInstance;
+import com.fitbur.playground.hk2.factory.impl.PerLookupInstance;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.api.PerLookup;
 import org.jvnet.hk2.annotations.Service;

@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
+package com.fitbur.playground.hk2.unmanaged;
 
-import com.fitbur.playground.hk2.factory.impl.PerThreadInstance;
-import org.glassfish.hk2.api.Factory;
-import org.glassfish.hk2.api.PerThread;
 import org.jvnet.hk2.annotations.Service;
 
 /**
@@ -25,17 +22,6 @@ import org.jvnet.hk2.annotations.Service;
  * @author Sharmarke Aden
  */
 @Service
-public class PerThreadFactory implements Factory<PerThreadInstance> {
-
-    @PerThread
-    @Override
-    public PerThreadInstance provide() {
-        return new PerThreadInstance();
-    }
-
-    @Override
-    public void dispose(PerThreadInstance instance) {
-        throw new IllegalAccessError("This method should not have been called");
-    }
+public class ManagedService {
 
 }

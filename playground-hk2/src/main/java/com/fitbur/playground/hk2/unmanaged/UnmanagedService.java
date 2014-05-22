@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.managed;
+package com.fitbur.playground.hk2.unmanaged;
 
-import com.fitbur.playground.hk2.core.DummyService;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
@@ -27,21 +26,21 @@ import javax.inject.Inject;
 public class UnmanagedService {
 
     @Inject
-    DummyService field;
-    DummyService method;
+    ManagedService field;
+    ManagedService method;
     private boolean destroyed;
     private boolean initialized;
 
     @Inject
-    public void setMethod(DummyService method) {
+    public void setMethod(ManagedService method) {
         this.method = method;
     }
 
-    public DummyService getField() {
+    public ManagedService getField() {
         return field;
     }
 
-    public DummyService getMethod() {
+    public ManagedService getMethod() {
         return method;
     }
 

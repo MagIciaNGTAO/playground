@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Sharmarke Aden.
+ * Copyright 2014 Fitbur.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,29 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
+package com.fitbur.playground.hk2.qualified.impl;
 
-import com.fitbur.playground.hk2.factory.impl.PerThreadInstance;
-import org.glassfish.hk2.api.Factory;
-import org.glassfish.hk2.api.PerThread;
+import com.fitbur.playground.hk2.qualified.CustomQualifier;
 import org.jvnet.hk2.annotations.Service;
 
 /**
  *
  * @author Sharmarke Aden
  */
+@CustomQualifier
 @Service
-public class PerThreadFactory implements Factory<PerThreadInstance> {
-
-    @PerThread
-    @Override
-    public PerThreadInstance provide() {
-        return new PerThreadInstance();
-    }
-
-    @Override
-    public void dispose(PerThreadInstance instance) {
-        throw new IllegalAccessError("This method should not have been called");
-    }
+public class CustomQualifiedService {
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Sharmarke Aden.
+ * Copyright 2014 Fitbur.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
+package com.fitbur.playground.hk2.provider;
 
-import com.fitbur.playground.hk2.factory.impl.PerThreadInstance;
+import com.fitbur.playground.hk2.provider.impl.BookOne;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.glassfish.hk2.api.ServiceLocator;
+import org.glassfish.hk2.api.IterableProvider;
 import org.jvnet.testing.hk2testng.HK2;
 import org.testng.annotations.Test;
 
@@ -27,25 +28,28 @@ import org.testng.annotations.Test;
  * @author Sharmarke Aden
  */
 @HK2
-public class PerThreadFactoryNGTest {
+public class ProvidedServiceNGTest {
 
     @Inject
-    ServiceLocator locator;
-    @Inject
-    PerThreadInstance sut;
+    ProvidedService sut;
 
     @Test
     public void assertInjection() {
-        assertThat(locator).isNotNull();
         assertThat(sut).isNotNull();
     }
 
     @Test
-    public void assertNotSame() {
-        new Thread(() -> {
-            assertThat(sut)
-                    .isNotSameAs(locator.getService(PerThreadInstance.class));
-        }).start();
+    public void assertProvider() {
+        Provider<BookOne> result = sut.getBookOne();
+        assertThat(result).isNotNull();
+        assertThat(result.get()).isNotNull();
+    }
+
+    @Test
+    public void assertIterableProvider() {
+        IterableProvider<Book> result = sut.getBooks();
+        assertThat(result).isNotNull();
+        assertThat(result.getSize()).isEqualTo(2);
     }
 
 }

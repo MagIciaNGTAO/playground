@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Sharmarke Aden.
+ * Copyright 2014 Fitbur.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.fitbur.playground.hk2.qualified.impl;
 
-package com.fitbur.playground.hk2.core;
+import javax.inject.Named;
+import org.jvnet.hk2.annotations.Service;
 
 /**
  *
  * @author Sharmarke Aden
  */
-public class PerLookupInstance {
-    
+@Named("explicit")
+@Service
+public class ExplicitlyNamedService {
+
 }

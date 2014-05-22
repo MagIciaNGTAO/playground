@@ -15,7 +15,7 @@
  */
 package com.fitbur.playground.hk2.factory;
 
-import com.fitbur.playground.hk2.core.DefaultInstance;
+import com.fitbur.playground.hk2.factory.impl.DefaultInstance;
 import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.glassfish.hk2.api.ServiceLocator;

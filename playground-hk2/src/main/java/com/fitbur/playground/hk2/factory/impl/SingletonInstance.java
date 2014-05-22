@@ -13,29 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
-
-import com.fitbur.playground.hk2.factory.impl.PerThreadInstance;
-import org.glassfish.hk2.api.Factory;
-import org.glassfish.hk2.api.PerThread;
-import org.jvnet.hk2.annotations.Service;
+package com.fitbur.playground.hk2.factory.impl;
 
 /**
  *
  * @author Sharmarke Aden
  */
-@Service
-public class PerThreadFactory implements Factory<PerThreadInstance> {
+public class SingletonInstance {
 
-    @PerThread
-    @Override
-    public PerThreadInstance provide() {
-        return new PerThreadInstance();
+    private boolean disposed;
+
+    public void dispose() {
+        this.disposed = !disposed;
     }
 
-    @Override
-    public void dispose(PerThreadInstance instance) {
-        throw new IllegalAccessError("This method should not have been called");
+    public boolean isDisposed() {
+        return disposed;
     }
 
 }

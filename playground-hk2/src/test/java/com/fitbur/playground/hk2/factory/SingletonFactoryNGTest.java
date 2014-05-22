@@ -15,7 +15,7 @@
  */
 package com.fitbur.playground.hk2.factory;
 
-import com.fitbur.playground.hk2.core.SingletonInstance;
+import com.fitbur.playground.hk2.factory.impl.SingletonInstance;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;

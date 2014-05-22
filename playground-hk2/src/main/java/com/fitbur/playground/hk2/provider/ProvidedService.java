@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Sharmarke Aden.
+ * Copyright 2014 Fitbur.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
+package com.fitbur.playground.hk2.provider;
 
-import com.fitbur.playground.hk2.factory.impl.PerThreadInstance;
-import org.glassfish.hk2.api.Factory;
-import org.glassfish.hk2.api.PerThread;
+import com.fitbur.playground.hk2.provider.impl.BookOne;
+import javax.inject.Inject;
+import javax.inject.Provider;
+import org.glassfish.hk2.api.IterableProvider;
 import org.jvnet.hk2.annotations.Service;
 
 /**
@@ -25,17 +26,23 @@ import org.jvnet.hk2.annotations.Service;
  * @author Sharmarke Aden
  */
 @Service
-public class PerThreadFactory implements Factory<PerThreadInstance> {
+public class ProvidedService {
 
-    @PerThread
-    @Override
-    public PerThreadInstance provide() {
-        return new PerThreadInstance();
+    private final Provider<BookOne> bookOne;
+    private final IterableProvider<Book> books;
+
+    @Inject
+    ProvidedService(Provider<BookOne> bookOne, IterableProvider<Book> books) {
+        this.bookOne = bookOne;
+        this.books = books;
     }
 
-    @Override
-    public void dispose(PerThreadInstance instance) {
-        throw new IllegalAccessError("This method should not have been called");
+    public Provider<BookOne> getBookOne() {
+        return bookOne;
+    }
+
+    public IterableProvider<Book> getBooks() {
+        return books;
     }
 
 }

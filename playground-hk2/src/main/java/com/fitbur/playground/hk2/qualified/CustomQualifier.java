@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Sharmarke Aden.
+ * Copyright 2014 Fitbur.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2.factory;
+package com.fitbur.playground.hk2.qualified;
 
-import com.fitbur.playground.hk2.factory.impl.DefaultInstance;
-import org.glassfish.hk2.api.Factory;
-import org.jvnet.hk2.annotations.Service;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE;
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.Target;
+import javax.inject.Qualifier;
 
 /**
  *
  * @author Sharmarke Aden
  */
-@Service
-public class DefaultFactory implements Factory<DefaultInstance> {
-
-    @Override
-    public DefaultInstance provide() {
-        return new DefaultInstance();
-    }
-
-    @Override
-    public void dispose(DefaultInstance instance) {
-        throw new IllegalAccessError("This method should not have been called");
-    }
-
+@Qualifier
+@Retention(RUNTIME)
+@Target({TYPE, METHOD, FIELD, PARAMETER})
+public @interface CustomQualifier {
 }
