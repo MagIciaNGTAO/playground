@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2;
+package com.fitbur.playground.hk2.factory;
 
+import com.fitbur.playground.hk2.core.PerThreadInstance;
 import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.glassfish.hk2.api.ServiceHandle;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.jvnet.testing.hk2testng.HK2;
 import org.testng.annotations.Test;
@@ -27,16 +27,25 @@ import org.testng.annotations.Test;
  * @author Sharmarke Aden
  */
 @HK2
-public class ImmediateServiceNGTest {
+public class PerThreadFactoryNGTest {
 
     @Inject
     ServiceLocator locator;
+    @Inject
+    PerThreadInstance sut;
 
     @Test
-    public void assertStarted() throws InterruptedException {
-        ServiceHandle<ImmediateService> handler = locator.getServiceHandle(ImmediateService.class);
-        assertThat(handler).isNotNull();
-        assertThat(handler.isActive()).isTrue();
+    public void assertInjection() {
+        assertThat(locator).isNotNull();
+        assertThat(sut).isNotNull();
+    }
+
+    @Test
+    public void assertNotSame() {
+        new Thread(() -> {
+            assertThat(sut)
+                    .isNotSameAs(locator.getService(PerThreadInstance.class));
+        }).start();
     }
 
 }

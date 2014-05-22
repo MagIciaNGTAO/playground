@@ -43,7 +43,12 @@
             <artifactId>hk2-locator</artifactId>
             <version>${hk2.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
    
 </project>

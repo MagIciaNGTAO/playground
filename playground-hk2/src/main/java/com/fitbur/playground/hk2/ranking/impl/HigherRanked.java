@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fitbur.playground.hk2;
+package com.fitbur.playground.hk2.ranking.impl;
 
-import org.glassfish.hk2.api.Immediate;
+import com.fitbur.playground.hk2.ranking.Ranked;
+import org.glassfish.hk2.api.Rank;
 import org.jvnet.hk2.annotations.Service;
 
 /**
  *
  * @author Sharmarke Aden
  */
-@Immediate
+@Rank(Integer.MAX_VALUE)
 @Service
-public class ImmediateService {
+public class HigherRanked implements Ranked {
 
 }
