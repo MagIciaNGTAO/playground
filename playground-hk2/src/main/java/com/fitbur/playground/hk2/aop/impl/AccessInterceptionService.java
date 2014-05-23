@@ -48,12 +48,18 @@ public class AccessInterceptionService implements InterceptionService {
 
     @Override
     public List<MethodInterceptor> getMethodInterceptors(Method method) {
-        return Collections.singletonList(interceptor);
+        if (method.isAnnotationPresent(Access.class)) {
+            return Collections.singletonList(interceptor);
+        }
+        return null;
     }
 
     @Override
     public List<ConstructorInterceptor> getConstructorInterceptors(Constructor<?> constructor) {
-        return Collections.singletonList(interceptor);
+        if (constructor.isAnnotationPresent(Access.class)) {
+            return Collections.singletonList(interceptor);
+        }
+        return null;
     }
 
 }

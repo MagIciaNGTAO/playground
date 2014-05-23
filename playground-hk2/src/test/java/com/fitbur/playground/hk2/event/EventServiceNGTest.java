@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
  * @author Sharmarke Aden
  */
 @HK2
-public class TopicPublisherNGTest {
+public class EventServiceNGTest {
 
     @Inject
     EventService sut;
@@ -42,8 +42,8 @@ public class TopicPublisherNGTest {
 
     @Test
     public void assertSubscription() {
-        sut.publish("subscribe");
-        assertThat(sut.getMessage()).isEqualTo("subscribe");
+        sut.publish("publish");
+        assertThat(sut.getMessage()).isEqualTo("publish");
     }
 
 }

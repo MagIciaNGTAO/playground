@@ -15,6 +15,8 @@
  */
 package com.fitbur.playground.hk2.event.impl;
 
+import java.util.Objects;
+
 /**
  *
  * @author Sharmarke Aden
@@ -29,6 +31,26 @@ public class MyTopic {
 
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.message);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MyTopic other = (MyTopic) obj;
+
+        return Objects.equals(this.message, other.message);
     }
 
 }
